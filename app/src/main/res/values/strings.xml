@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Engine Injection</string>
+    <string name="Displacement_Header">Displacement &#8595;</string>
+    <string name="InjectorFlowRate_Header">Injector Flow Rate &#8595;</string>
+    <string name="injectorTime_Header">Injector Time &#8595;</string>
+    <string name="CompressionRation_Header">Compression Ratio &#8595;</string>
+    <string name="bore">Bore</string>
+    <string name="stroke">Stroke</string>
+    <string name="cylinders">Cylinders</string>
+    <string name="CID">CID</string>
+    <string name="calc_cid">Calc CID</string>
+    <string name="oldPSI">Old PSI</string>
+    <string name="newPSI">New PSI</string>
+    <string name="injectorLbHr">Injector Lb/Hr @ Old PSI</string>
+    <string name="calcNewFlowRate">Calc. New Flow Rate</string>
+    <string name="NewFlowRate">New Flow Rate</string>
+    <string name="RPM">RPM</string>
+    <string name="calcInjectorTime">Calc Injector Time</string>
+    <string name="cyclesSec">Cycles/Sec Avail.</string>
+    <string name="totalSecAvail">"Total Sec Avail. / Cycle "</string>
+    <string name="SecAvail80">Sec Avail. @ 80% DC</string>
+    <string name="compression_ratio_calc">Compression Ratio</string>
+    <string name="combustion_chamber_volume_cc">Combustion Chamber Volume CC</string>
+    <string name="chamber_volume_ci">Chamber Volume CI</string>
+    <string name="cylinder_volume">Cylinder Volume</string>
+    <string name="head_gasket_thickness">Head Gasket Thickness</string>
+    <string name="head_gasket_bore">Head Gasket Bore</string>
+    <string name="head_gasket_volume">Head Gasket Volume</string>
+    <string name="piston_to_deck_clearance">Piston To Deck Clearance</string>
+    <string name="PtoDC_Volume_CI">Piston to Deck Volume CI</string>
+    <string name="piston_dome_dish_volume">Piston Dome Dish Volume</string>
+    <string name="piston_dome_dish_volume_ci">Piston Dome Dish Volume CI</string>
+    <string name="volume_bdc">Volume BDC</string>
+    <string name="volume_tdc">Volume TDC</string>
+    <string name="piston_dome_dish_volume_cc">Piston Dome Dish Volume CC</string>
+    <string name="calc_compression_ratio">Calc Compression Ratio</string>
+</resources>

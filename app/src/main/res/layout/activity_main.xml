@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/accordion_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:rowCount="1"
+            android:layout_gravity="center">
+
+            <TextView
+                android:text="Engine"
+                android:layout_gravity="left"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:theme="@style/EngineInjection"
+                tools:ignore="RtlHardcoded" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon"
+                android:layout_row="0"
+                android:layout_column="1" />
+
+            <TextView
+                android:text="Injection"
+                android:layout_gravity="right"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:theme="@style/EngineInjection"
+                tools:ignore="RtlHardcoded" />
+
+        </GridLayout>
+
+
+        <TextView
+            android:id="@+id/tvDisplacementCalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Displacement_Header"
+            android:theme="@style/Header" />
+
+        <LinearLayout
+            android:id="@+id/lvDisplacementCalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:orientation="vertical"
+            android:rowCount="3"
+            android:visibility="gone">
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="5">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="@string/bore"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etBore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal"
+                    android:theme="@style/TextEdit" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:text="@string/stroke"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etStroke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:text="@string/cylinders"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etCylinders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:inputType="number|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <Button
+                    android:id="@+id/btnCID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="0"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="center"
+                    android:text="@string/calc_cid" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="0"
+                    android:text="@string/CID"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvCID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="1"
+                    android:theme="@style/Label" />
+            </GridLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvInjectorCalcFlowRate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/InjectorFlowRate_Header"
+            android:theme="@style/Header" />
+
+        <LinearLayout
+            android:id="@+id/lvInjectorCalcFlowRate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:orientation="vertical"
+            android:rowCount="3"
+            android:visibility="gone">
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="5">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="@string/oldPSI"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etOldPSI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:text="@string/newPSI"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etNewPSI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:text="@string/injectorLbHr"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etInjectorLbHr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <Button
+                    android:id="@+id/btnNewFlowRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="0"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="center"
+                    android:text="@string/calcNewFlowRate" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="0"
+                    android:text="@string/NewFlowRate"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvNewFlowRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="1"
+                    android:theme="@style/Label" />
+            </GridLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvInjectorTimeCalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/injectorTime_Header"
+            android:theme="@style/Header" />
+
+        <LinearLayout
+            android:id="@+id/lvInjectorTimeCalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:orientation="vertical"
+            android:rowCount="3"
+            android:visibility="gone">
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="5">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="@string/RPM"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etRPM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:inputType="number|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <Button
+                    android:id="@+id/btnInjectorTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="center"
+                    android:text="@string/calcInjectorTime" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:text="@string/cyclesSec"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvCyclesSec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="0"
+                    android:text="@string/totalSecAvail"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvTotalSecAvail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="0"
+                    android:text="@string/SecAvail80"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvSecAvail80"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="1"
+                    android:theme="@style/Label" />
+            </GridLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvCompressionRatioCalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/CompressionRation_Header"
+            android:theme="@style/Header" />
+
+        <LinearLayout
+            android:id="@+id/lvCompressionRatioCalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:orientation="vertical"
+            android:rowCount="3"
+            android:visibility="gone">
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="16">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:text="@string/combustion_chamber_volume_cc"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etCombustionChamberVolumeCC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="0"
+                    android:text="@string/chamber_volume_ci"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvChamberVolumeCI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="0"
+                    android:text="@string/bore"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etBore2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="2"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="0"
+                    android:text="@string/stroke"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etStroke2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="3"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="0"
+                    android:text="@string/cylinder_volume"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvCylinderVolume"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="4"
+                    android:layout_column="1"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="5"
+                    android:layout_column="0"
+                    android:text="@string/head_gasket_thickness"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etHeadGasketThickness"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="5"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="6"
+                    android:layout_column="0"
+                    android:text="@string/head_gasket_bore"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etHeadGasketBore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="6"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="7"
+                    android:layout_column="0"
+                    android:text="@string/head_gasket_volume"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvHeadGasketVolume"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="7"
+                    android:layout_column="1"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="8"
+                    android:layout_column="0"
+                    android:text="@string/piston_to_deck_clearance"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etPistonToDeckClearance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="8"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="9"
+                    android:layout_column="0"
+                    android:text="@string/PtoDC_Volume_CI"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvPtoDCVolumeCI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="9"
+                    android:layout_column="1"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="10"
+                    android:layout_column="0"
+                    android:text="@string/piston_dome_dish_volume_cc"
+                    android:theme="@style/Label" />
+
+                <EditText
+                    android:id="@+id/etPistonDomeDishVolumeCC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="10"
+                    android:layout_column="1"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:theme="@style/TextEdit" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="11"
+                    android:layout_column="0"
+                    android:text="@string/piston_dome_dish_volume_ci"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvPistonDomeDishVolumeCI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="11"
+                    android:layout_column="1"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="12"
+                    android:layout_column="0"
+                    android:text="@string/volume_bdc"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvVolumeAtBDC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="12"
+                    android:layout_column="1"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="13"
+                    android:layout_column="0"
+                    android:text="@string/volume_tdc"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvVolumeAtTDC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="13"
+                    android:layout_column="1"
+                    android:theme="@style/Label" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="14"
+                    android:layout_column="0"
+                    android:text="@string/compression_ratio_calc"
+                    android:theme="@style/Label" />
+
+                <TextView
+                    android:id="@+id/tvCompressionRatio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_row="14"
+                    android:layout_column="1"
+                    android:theme="@style/Label" />
+
+                <Button
+                    android:id="@+id/btnCalcCompressionRation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_row="15"
+                    android:layout_column="0"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="center"
+                    android:text="@string/calc_compression_ratio" />
+            </GridLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
