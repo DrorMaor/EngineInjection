@@ -1,5 +1,6 @@
 package com.maorlamp.engineinjection
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import org.w3c.dom.Text
 import kotlin.math.pow
 
@@ -15,6 +17,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Set the theme based on the system's default night mode
+        val nightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        when (nightMode) {
+            Configuration.UI_MODE_NIGHT_YES -> delegate.setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            Configuration.UI_MODE_NIGHT_NO -> delegate.setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
         setContentView(R.layout.activity_main)
 
         val circleSquareDiameter = 0.7854
