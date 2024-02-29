@@ -34,4 +34,17 @@
     <string name="volume_tdc">Volume TDC</string>
     <string name="piston_dome_dish_volume_cc">Piston Dome Dish Volume CC</string>
     <string name="calc_compression_ratio">Calc Compression Ratio</string>
+    <string name="engine">Engine</string>
+    <string name="injection">Injection</string>
+    <string name="calc_InjectorPumpingVolume">Calc Injector Pumping Volume</string>
+    <string name="DC_pctMoreThan80">If DC % is more than 80</string>
+    <string name="DC_pctNeeded">DC % Needed</string>
+    <string name="InjectorFlowCapacity">Injector Flow Capacity</string>
+    <string name="NeededFlowInjection_lb_min">Needed Flow/Inj. - lb/min</string>
+    <string name="AFR">AFR</string>
+    <string name="NumberOfCylinders"># of Cylinders</string>
+    <string name="Injector_lb_hr">Injector lb/hr</string>
+    <string name="AIR_lb_hr">AIR lb/hr</string>
+    <string name="CFM">CFM</string>
+    <string name="InjectorPumpingVolume_Header">Injector Pumping Volume &#8595;</string>
 </resources>

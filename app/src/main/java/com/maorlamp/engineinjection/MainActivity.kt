@@ -2,7 +2,6 @@ package com.maorlamp.engineinjection
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -10,7 +9,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import org.w3c.dom.Text
 import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val circleSquareDiameter = 0.7854
-        val injection = 0.061
+        val cmPow3 = 0.061
 
         // DISPLACEMENT CALC
         val tvDisplacementCalc = findViewById<TextView>(R.id.tvDisplacementCalc)
@@ -137,7 +135,7 @@ class MainActivity : AppCompatActivity() {
             val etPistonDomeDishVolumeCC: EditText = findViewById(R.id.etPistonDomeDishVolumeCC)
             val pistonDomeDishVolumeCC: Double = etPistonDomeDishVolumeCC.text.toString().toDouble()
 
-            val chamberVolumeCI: Double = combustionChamberVolumeCC * injection
+            val chamberVolumeCI: Double = combustionChamberVolumeCC * cmPow3
             val tvChamberVolumeCI: TextView = findViewById(R.id.tvChamberVolumeCI)
             tvChamberVolumeCI.text = chamberVolumeCI.toString()
 
@@ -154,7 +152,7 @@ class MainActivity : AppCompatActivity() {
             val tvPtoDCVolumeCI: TextView = findViewById(R.id.tvPtoDCVolumeCI)
             tvPtoDCVolumeCI.text = PtoDCVolumeCI.toString()
 
-            val pistonDomeDishVolumeCI: Double = pistonDomeDishVolumeCC * injection
+            val pistonDomeDishVolumeCI: Double = pistonDomeDishVolumeCC * cmPow3
             val tvPistonDomeDishVolumeCI: TextView = findViewById(R.id.tvPistonDomeDishVolumeCI)
             tvPistonDomeDishVolumeCI.text = pistonDomeDishVolumeCI.toString()
 
@@ -174,6 +172,56 @@ class MainActivity : AppCompatActivity() {
 
         }
         /////////////////
+
+
+        // INJECTOR PUMPING VOLUME
+        val tvInjectorPumpingVolume = findViewById<TextView>(R.id.tvInjectorPumpingVolume)
+        val lvInjectorPumpingVolume = findViewById<LinearLayout>(R.id.lvInjectorPumpingVolume)
+
+        // Add click listeners to headers
+        tvInjectorPumpingVolume.setOnClickListener { toggleContentVisibility(lvInjectorPumpingVolume) }
+
+        // Hide content initially
+        lvInjectorPumpingVolume.visibility = View.GONE
+
+        val btnInjectorPumpingVolume = findViewById<Button>(R.id.btnInjectorPumpingVolume)
+        btnInjectorPumpingVolume.setOnClickListener {
+            val etCID: EditText = findViewById(R.id.etCID)
+            val CID: Int = etCID.text.toString().toInt()
+            val etRPM1: EditText = findViewById(R.id.etRPM1)
+            val RPM1: Int = etRPM1.text.toString().toInt()
+            val CFM: Double = ((CID * RPM1) / (1728 * 2)).toDouble()
+            val tvCFM: TextView = findViewById(R.id.tvCFM)
+            tvCFM.text = CFM.toString()
+            val AIR_lb_hr: Double = CFM * 0.076
+            val tvAIR_lb_hr: TextView = findViewById(R.id.tvAIR_lb_hr)
+            tvAIR_lb_hr.text = AIR_lb_hr.toString()
+
+            val etNumberOfCylinders: EditText = findViewById(R.id.etNumberOfCylinders)
+            val numberOfCylinders: Int = etNumberOfCylinders.text.toString().toInt()
+            val etAFR: EditText = findViewById(R.id.etAFR)
+            val AFR: Double = etAFR.text.toString().toDouble()
+            val neededFlowInjection_lb_min: Double = (AIR_lb_hr / numberOfCylinders) / AFR
+            val tvNeededFlowInjection_lb_min: TextView =
+                findViewById(R.id.tvNeededFlowInjection_lb_min)
+            tvNeededFlowInjection_lb_min.text = neededFlowInjection_lb_min.toString()
+
+            val etInjectorLbHr1: EditText = findViewById(R.id.etInjectorLbHr1)
+            val injectorLbHr1: Int = etInjectorLbHr1.text.toString().toInt()
+            val injectorFlowCapacity: Double = injectorLbHr1 / 60.0
+            val tvInjectorFlowCapacity: TextView = findViewById(R.id.tvInjectorFlowCapacity)
+            tvInjectorFlowCapacity.text = injectorFlowCapacity.toString()
+
+            val tvDC_pctNeeded: TextView = findViewById(R.id.tvDC_pctNeeded)
+            val DC_pctNeeded: Double = neededFlowInjection_lb_min / injectorFlowCapacity
+            tvDC_pctNeeded.text = DC_pctNeeded.toString()
+
+            val tvDC_pctMoreThan80: TextView = findViewById(R.id.tvDC_pctMoreThan80)
+            val DC_pctMoreThan80: Double = (DC_pctNeeded * injectorLbHr1) / 0.8
+            tvDC_pctMoreThan80.text = DC_pctMoreThan80.toString()
+
+        }
+        //////////////////////////////
 
     }
 
